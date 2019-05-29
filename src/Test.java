@@ -5,7 +5,6 @@ import dao.UserRoleDAO;
 import object.Role;
 import object.User;
 import object.UserRole;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Savepoint;
@@ -49,12 +48,18 @@ public class Test {
 
         // Task02.a
 //        roleDAO.addRoleParametric(someRole);
+//        connectDataBase.commit();
 //        userDAO.addUserParametric(someUser);
+//        connectDataBase.commit();
 //        userRoleDAO.addRoleParametric(someUserRole);
+//        connectDataBase.commit();
         // Task02.b
 //        roleDAO.addRoleBatch(someRole);
+//        connectDataBase.commit();
 //        userDAO.addUserBatch(someUser);
+//        connectDataBase.commit();
 //        userRoleDAO.addUserRoleBatch(someUserRole);
+//        connectDataBase.commit();
 
         // Task03
         User findingUser;

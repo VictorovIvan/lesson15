@@ -8,10 +8,9 @@ import java.sql.SQLException;
  * Class ConnectDataBase
  */
 public class ConnectDataBase {
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:postgresql://localhost:5432/Task01";
-    static final String USER = "postgres";
-    static final String PASS = "333999";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/Task01";
+    private static final String USER = "postgres";
+    private static final String PASS = "333999";
 
     /**
      * Connect to data base Task01

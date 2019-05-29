@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * Class UserRoleDAO
  */
 public class UserRoleDAO {
-    public Connection connectDataBase;
+    private Connection connectDataBase;
 
     /**
      * Constructor RoleDAO

@@ -7,13 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Class UserDAO
  */
 public class UserDAO {
-    public Connection connectDataBase;
+    private Connection connectDataBase;
 
     /**
      * Constructor UserDAO
@@ -69,11 +68,10 @@ public class UserDAO {
 
     /**
      * Get user using login_id and name
-     * @return
-     * @throws SQLException
+     * @return Query from user
+     * @throws SQLException  An exception that provides information on a database access error or other errors.
      */
     public User getUserByLoginIdAndName(Integer userLoginId, String userName) throws SQLException {
-        User user = null;
         PreparedStatement prepStatement = connectDataBase.prepareStatement("SELECT * FROM \"public\".\"USER\" WHERE (login_id = ?) AND (name = ?)");
         prepStatement.setInt(1, userLoginId);
         prepStatement.setString(2, userName);

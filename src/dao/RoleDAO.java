@@ -4,13 +4,12 @@ import object.Role;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Class RoleDao
  */
 public class RoleDAO {
-    public Connection connectDataBase;
+    private Connection connectDataBase;
 
     /**
      * Constructor RoleDAO
