@@ -79,7 +79,6 @@ public class Test {
 //        userRoleJDBC.addRoleParametric(someUserRole);
 //        connectDataBase.commit();
 //        Savepoint savepoint03 = connectDataBase.setSavepoint();
-
         // Task04.b
         roleJDBC.addRoleParametric(someRole);
         connectDataBase.commit();
