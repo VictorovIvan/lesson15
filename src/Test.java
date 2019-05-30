@@ -1,7 +1,7 @@
-import dao.ConnectDataBase;
-import dao.RoleDAO;
-import dao.UserDAO;
-import dao.UserRoleDAO;
+import jdbc.ConnectDataBase;
+import jdbc.RoleJDBC;
+import jdbc.UserJDBC;
+import jdbc.UserRoleJDBC;
 import object.Role;
 import object.User;
 import object.UserRole;
@@ -38,32 +38,31 @@ public class Test {
         LocalDate localDate = LocalDate.of(1950, Month.DECEMBER, 30);
         Role someRole = new Role(1, Role.enumName.Administration, "Some description about Administration");
         User someUser = new User(1, "ABC", localDate, 1, "London", "abra@cadab.ra", "Somebody user");
-        User someUserError = new User(1, "ABC", localDate, 1, "London", "abra@cadab.ra", "Somebody user");
         UserRole someUserRole = new UserRole(1, 0, 0);
         Connection connectDataBase = ConnectDataBase.connectionDataBase(null);
         connectDataBase.setAutoCommit(false);
-        RoleDAO roleDAO = new RoleDAO(connectDataBase);
-        UserDAO userDAO = new UserDAO(connectDataBase);
-        UserRoleDAO userRoleDAO = new UserRoleDAO(connectDataBase);
+        RoleJDBC roleJDBC = new RoleJDBC(connectDataBase);
+        UserJDBC userJDBC = new UserJDBC(connectDataBase);
+        UserRoleJDBC userRoleJDBC = new UserRoleJDBC(connectDataBase);
 
         // Task02.a
-//        roleDAO.addRoleParametric(someRole);
+//        roleJDBC.addRoleParametric(someRole);
 //        connectDataBase.commit();
-//        userDAO.addUserParametric(someUser);
+//        userJDBC.addUserParametric(someUser);
 //        connectDataBase.commit();
-//        userRoleDAO.addRoleParametric(someUserRole);
+//        userRoleJDBC.addRoleParametric(someUserRole);
 //        connectDataBase.commit();
         // Task02.b
-//        roleDAO.addRoleBatch(someRole);
+//        roleJDBC.addRoleBatch(someRole);
 //        connectDataBase.commit();
-//        userDAO.addUserBatch(someUser);
+//        userJDBC.addUserBatch(someUser);
 //        connectDataBase.commit();
-//        userRoleDAO.addUserRoleBatch(someUserRole);
+//        userRoleJDBC.addUserRoleBatch(someUserRole);
 //        connectDataBase.commit();
 
         // Task03
         User findingUser;
-        findingUser = userDAO.getUserByLoginIdAndName(1, "ABC");
+        findingUser = userJDBC.getUserByLoginIdAndName(1, "ABC");
         if (findingUser != null) {
             System.out.println(findingUser.toString());
         } else {
@@ -71,25 +70,25 @@ public class Test {
         }
 
         // Task04.a
-//        roleDAO.addRoleParametric(someRole);
+//        roleJDBC.addRoleParametric(someRole);
 //        connectDataBase.commit();
 //        Savepoint savepoint01 = connectDataBase.setSavepoint();
-//        userDAO.addUserParametric(someUser);
+//        userJDBC.addUserParametric(someUser);
 //        connectDataBase.commit();
 //        Savepoint savepoint02 = connectDataBase.setSavepoint();
-//        userRoleDAO.addRoleParametric(someUserRole);
+//        userRoleJDBC.addRoleParametric(someUserRole);
 //        connectDataBase.commit();
 //        Savepoint savepoint03 = connectDataBase.setSavepoint();
 
         // Task04.b
-        roleDAO.addRoleParametric(someRole);
+        roleJDBC.addRoleParametric(someRole);
         connectDataBase.commit();
         Savepoint savepointA01 = connectDataBase.setSavepoint();
-        userDAO.addUserParametric(someUser);
+        userJDBC.addUserParametric(someUser);
         connectDataBase.commit();
         Savepoint savepointA02 = connectDataBase.setSavepoint();
         try{
-        userRoleDAO.addRoleParametric(null);}
+        userRoleJDBC.addRoleParametric(null);}
         catch(NullPointerException nullPointer){
             connectDataBase.rollback(savepointA02);
             System.out.println("Return to savepointA02");
